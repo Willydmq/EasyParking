@@ -35,6 +35,27 @@ CREATE TABLE `cliente` (
 -- Dumping data for table `cliente`
 --
 
+--
+-- Table structure for table `facturaPago`
+--
+
+DROP TABLE IF EXISTS `facturaPago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `facturaPago` (
+  fac_id INT NOT NULL, /* Identificador de la factura*/
+  fecha_fac TIMESTAMP NOT NULL, /* Fecha */
+  valor_fac INT NOT NULL, /* Valor total */
+  pago_recibido INT NOT NULL, /* Billete (denominacion) recibida */
+  pago_tarjeta BOOL NOT NULL, /* Si el pago fue en efectivo o con tarjeta  */
+  PRIMARY KEY (fac_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `facturaPago`
+--
+
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 INSERT INTO `cliente` VALUES ('1832305','Colette','Nielsen','506-1833'),('5133354','Hu','England','328-6544'),('5354793','Dorothy','Curtis','723-4271'),('938360','Dennis','Sutton','573-6531'),('9396381','Matthew','Livingston','797-3502');
