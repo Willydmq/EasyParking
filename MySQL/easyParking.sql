@@ -77,3 +77,24 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-08-23 11:22:05
+CREATE TABLE servicio (
+  num_ser int (4) NOT NULL,
+  fec_ser date  NOT NULL,
+  Val_ser int (6) not null,
+  iva_ser int (6) not null,
+  pla_veh_ser varchar (8) not null,
+  nom_cli_ser varchar (30) not null,
+  ape_cli_ser varchar (30) not null,
+  constraint servicio_pk primary key (num_ser)
+  )
+  
+/*  glosario
+num_ser: numero servicio
+  fec_ser:fecha servicio
+  Val_ser:valor servicio
+  iva_se: iva servicior 
+  pla_veh_ser: placa vehiculo servicio
+  nom_cli_ser: nombre cliente servicio
+  ape_cli_ser: apellidos cliente servicio
+  */
+
