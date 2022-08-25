@@ -111,8 +111,9 @@ CREATE TABLE `vehiculo` (
   `color_veh` varchar(10) NOT NULL,
   `modelo_veh` varchar(10) NOT NULL,
   `clase_veh` varchar(10) NOT NULL,
-  PRIMARY KEY (`placa_veh`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`placa_veh`),
+  CONSTRAINT `vehiculo_clase_veh_ck` CHECK (((`clase_veh` = _utf8mb4'Camion') or (`clase_veh` = _utf8mb4'Campero') or (`clase_veh` = _utf8mb4'Automovil') or (`clase_veh` = _utf8mb4'Motocicleta')))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-25 10:37:23
+-- Dump completed on 2022-08-25 14:05:21
