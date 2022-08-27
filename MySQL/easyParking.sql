@@ -15,10 +15,31 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES ('1832305','Colette','Nielsen','506-1833'),('5133354','Hu','England','328-6544'),('5354793','Dorothy','Curtis','723-4271'),('938360','Dennis','Sutton','573-6531'),('9396381','Matthew','Livingston','797-3502');
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+--
+-- Table structure for table `fac_servicio`
+--
+
+DROP TABLE IF EXISTS `fac_servicio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fac_servicio` (
+  `id_ser` int NOT NULL,
+  `numero_fac` int NOT NULL,
+  PRIMARY KEY (`id_ser`,`numero_fac`),
+  KEY `fac_servicio_numero_fac_fk` (`numero_fac`),
+  CONSTRAINT `fac_servicio_id_ser_fk` FOREIGN KEY (`id_ser`) REFERENCES `servicio` (`id_ser`),
+  CONSTRAINT `fac_servicio_numero_fac_fk` FOREIGN KEY (`numero_fac`) REFERENCES `factura` (`numero_fac`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fac_servicio`
+--
+
+LOCK TABLES `fac_servicio` WRITE;
+/*!40000 ALTER TABLE `fac_servicio` DISABLE KEYS */;
+INSERT INTO `fac_servicio` VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
+/*!40000 ALTER TABLE `fac_servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -56,17 +77,17 @@ DROP TABLE IF EXISTS `servicio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `servicio` (
-  `num_ser` int NOT NULL,
-  `fec_ser` datetime NOT NULL,
-  `Val_ser` int NOT NULL,
+  `id_ser` int NOT NULL AUTO_INCREMENT,
+  `fecha_ser` datetime NOT NULL,
   `horaEntrada_ser` time NOT NULL,
-  `horaSalida_ser` time NOT NULL,
-  `iva_ser` int NOT NULL,
-  `pla_veh_ser` varchar(8) NOT NULL,
-  `nom_cli_ser` varchar(30) NOT NULL,
-  `ape_cli_ser` varchar(30) NOT NULL,
-  PRIMARY KEY (`num_ser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `horaSalida_ser` time DEFAULT NULL,
+  `valor_ser` double NOT NULL,
+  `iva_ser` double NOT NULL,
+  `placa_veh` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id_ser`),
+  KEY `servicio_placa_veh_fk` (`placa_veh`),
+  CONSTRAINT `servicio_placa_veh_fk` FOREIGN KEY (`placa_veh`) REFERENCES `vehiculo` (`placa_veh`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +96,7 @@ CREATE TABLE `servicio` (
 
 LOCK TABLES `servicio` WRITE;
 /*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
-INSERT INTO `servicio` VALUES (1,'2019-05-08 00:00:00',1000,'06:00:00','07:00:00',190,'AAA-123','Carlos','morales sanabria'),(2,'2019-06-08 00:00:00',1000,'07:00:00','08:00:00',190,'BBB-456','MAaria','rojas estipia'),(3,'2019-07-08 00:00:00',1000,'09:00:00','10:00:00',190,'CCC-789','rodrigo','perez bejarano'),(4,'2019-08-08 00:00:00',1000,'10:00:00','11:00:00',190,'DDD-901','Camilo','rojas alvarez'),(5,'2019-09-08 00:00:00',1000,'11:00:00','12:00:00',190,'EEE-254','laura','martinez gamboa');
+INSERT INTO `servicio` VALUES (1,'2019-05-08 00:00:00','08:00:00','09:00:00',1000,19,'AQR43A'),(2,'2019-05-08 00:00:00','03:30:00','08:30:00',1000,19,'FRN61'),(3,'2019-05-07 00:00:00','05:43:00','09:00:00',1000,19,'SMM78B'),(4,'2019-01-01 00:00:00','11:23:03','05:00:00',1000,19,'ttr89b'),(5,'2019-03-01 00:00:00','08:23:03','09:00:00',1000,19,'vvg12r');
 /*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-25 14:05:21
+-- Dump completed on 2022-08-26 19:16:46
