@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
--- Host: 127.0.0.1    Database: parking
+-- Host: localhost    Database: easyparking
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	5.7.38-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -16,115 +16,137 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fac_servicio`
+-- Table structure for table `categoria_vehiculo`
 --
 
-DROP TABLE IF EXISTS `fac_servicio`;
+DROP TABLE IF EXISTS `categoria_vehiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `fac_servicio` (
-  `id_ser` int NOT NULL,
-  `numero_fac` int NOT NULL,
-  PRIMARY KEY (`id_ser`,`numero_fac`),
-  KEY `fac_servicio_numero_fac_fk` (`numero_fac`),
-  CONSTRAINT `fac_servicio_id_ser_fk` FOREIGN KEY (`id_ser`) REFERENCES `servicio` (`id_ser`),
-  CONSTRAINT `fac_servicio_numero_fac_fk` FOREIGN KEY (`numero_fac`) REFERENCES `factura` (`numero_fac`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categoria_vehiculo` (
+  `codigo_cat` int(11) NOT NULL,
+  `valor_cat` int(11) NOT NULL,
+  PRIMARY KEY (`codigo_cat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `fac_servicio`
+-- Dumping data for table `categoria_vehiculo`
 --
 
-LOCK TABLES `fac_servicio` WRITE;
-/*!40000 ALTER TABLE `fac_servicio` DISABLE KEYS */;
-INSERT INTO `fac_servicio` VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
-/*!40000 ALTER TABLE `fac_servicio` ENABLE KEYS */;
+LOCK TABLES `categoria_vehiculo` WRITE;
+/*!40000 ALTER TABLE `categoria_vehiculo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categoria_vehiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `factura`
+-- Table structure for table `entradas`
 --
 
-DROP TABLE IF EXISTS `factura`;
+DROP TABLE IF EXISTS `entradas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `factura` (
-  `numero_fac` int NOT NULL AUTO_INCREMENT,
-  `fecha_fac` timestamp NOT NULL,
-  `valorTotal_fac` double NOT NULL,
-  `pago_fac` varchar(20) NOT NULL,
-  PRIMARY KEY (`numero_fac`),
-  CONSTRAINT `factura_pago_fac_ck` CHECK (((`pago_fac` = _utf8mb4'Efectivo') or (`pago_fac` = _utf8mb4'Debito') or (`pago_fac` = _utf8mb4'Transfer')))
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `entradas` (
+  `ide_ent` int(11) NOT NULL,
+  `placa` varchar(8) NOT NULL,
+  `fecha_ent` date NOT NULL,
+  `hora_ent` varchar(15) NOT NULL,
+  `codigo_cat` int(11) NOT NULL,
+  `nit` varchar(15) NOT NULL,
+  PRIMARY KEY (`ide_ent`),
+  KEY `entradas_codigo_cat_fk` (`codigo_cat`),
+  KEY `entradas_nit_fk` (`nit`),
+  CONSTRAINT `entradas_codigo_cat_fk` FOREIGN KEY (`codigo_cat`) REFERENCES `categoria_vehiculo` (`codigo_cat`),
+  CONSTRAINT `entradas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `factura`
+-- Dumping data for table `entradas`
 --
 
-LOCK TABLES `factura` WRITE;
-/*!40000 ALTER TABLE `factura` DISABLE KEYS */;
-INSERT INTO `factura` VALUES (1,'2019-05-08 05:00:00',3000,'Efectivo'),(2,'2019-05-18 05:00:00',6000,'Efectivo'),(3,'2019-05-28 05:00:00',9000,'Debito'),(4,'2019-06-08 05:00:00',3500,'Debito'),(5,'2019-06-18 05:00:00',7000,'Transfer');
-/*!40000 ALTER TABLE `factura` ENABLE KEYS */;
+LOCK TABLES `entradas` WRITE;
+/*!40000 ALTER TABLE `entradas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `entradas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `servicio`
+-- Table structure for table `parqueadero`
 --
 
-DROP TABLE IF EXISTS `servicio`;
+DROP TABLE IF EXISTS `parqueadero`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `servicio` (
-  `id_ser` int NOT NULL AUTO_INCREMENT,
-  `fecha_ser` datetime NOT NULL,
-  `horaEntrada_ser` time NOT NULL,
-  `horaSalida_ser` time DEFAULT NULL,
-  `valor_ser` double NOT NULL,
-  `iva_ser` double NOT NULL,
-  `placa_veh` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id_ser`),
-  KEY `servicio_placa_veh_fk` (`placa_veh`),
-  CONSTRAINT `servicio_placa_veh_fk` FOREIGN KEY (`placa_veh`) REFERENCES `vehiculo` (`placa_veh`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `parqueadero` (
+  `nit` varchar(15) NOT NULL,
+  `razon_social` varchar(80) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `plaza_carro` int(11) NOT NULL,
+  `plaza_moto` int(11) NOT NULL,
+  `codigo_usu` varchar(15) NOT NULL,
+  PRIMARY KEY (`nit`),
+  KEY `parqueadero_codigo_usu_fk` (`codigo_usu`),
+  CONSTRAINT `parqueadero_codigo_usu_fk` FOREIGN KEY (`codigo_usu`) REFERENCES `usuario` (`codigo_usu`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `servicio`
+-- Dumping data for table `parqueadero`
 --
 
-LOCK TABLES `servicio` WRITE;
-/*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
-INSERT INTO `servicio` VALUES (1,'2019-05-08 00:00:00','08:00:00','09:00:00',1000,19,'AQR43A'),(2,'2019-05-08 00:00:00','03:30:00','08:30:00',1000,19,'FRN61'),(3,'2019-05-07 00:00:00','05:43:00','09:00:00',1000,19,'SMM78B'),(4,'2019-01-01 00:00:00','11:23:03','05:00:00',1000,19,'ttr89b'),(5,'2019-03-01 00:00:00','08:23:03','09:00:00',1000,19,'vvg12r');
-/*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
+LOCK TABLES `parqueadero` WRITE;
+/*!40000 ALTER TABLE `parqueadero` DISABLE KEYS */;
+/*!40000 ALTER TABLE `parqueadero` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `vehiculo`
+-- Table structure for table `salidas`
 --
 
-DROP TABLE IF EXISTS `vehiculo`;
+DROP TABLE IF EXISTS `salidas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vehiculo` (
-  `placa_veh` varchar(10) NOT NULL,
-  `color_veh` varchar(10) NOT NULL,
-  `modelo_veh` varchar(10) NOT NULL,
-  `clase_veh` varchar(10) NOT NULL,
-  PRIMARY KEY (`placa_veh`),
-  CONSTRAINT `vehiculo_clase_veh_ck` CHECK (((`clase_veh` = _utf8mb4'Camion') or (`clase_veh` = _utf8mb4'Campero') or (`clase_veh` = _utf8mb4'Automovil') or (`clase_veh` = _utf8mb4'Motocicleta')))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `salidas` (
+  `ide_sal` int(11) NOT NULL,
+  `fecha_sal` date NOT NULL,
+  `hora_sal` varchar(15) NOT NULL,
+  `valor_pagar` int(11) NOT NULL,
+  `nit` varchar(15) NOT NULL,
+  PRIMARY KEY (`ide_sal`),
+  KEY `salidas_nit_fk` (`nit`),
+  CONSTRAINT `salidas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vehiculo`
+-- Dumping data for table `salidas`
 --
 
-LOCK TABLES `vehiculo` WRITE;
-/*!40000 ALTER TABLE `vehiculo` DISABLE KEYS */;
-INSERT INTO `vehiculo` VALUES ('AQR43A','rojo','ug','Camion'),('FRN61','blanco','ninguno','Camion'),('SMM78B','verde','esperanza','Automovil'),('ttr89b','amarillo','allegro','Automovil'),('vvg12r','negro','bronco','Campero');
-/*!40000 ALTER TABLE `vehiculo` ENABLE KEYS */;
+LOCK TABLES `salidas` WRITE;
+/*!40000 ALTER TABLE `salidas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `salidas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `codigo_usu` varchar(15) NOT NULL,
+  `nombre_usu` varchar(50) NOT NULL,
+  PRIMARY KEY (`codigo_usu`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -136,4 +158,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-26 19:16:46
+-- Dump completed on 2022-08-28 16:55:34
