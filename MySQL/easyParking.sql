@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `categoria_vehiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categoria_vehiculo` (
-  `codigo_cat` int(11) NOT NULL,
+  `codigo_cat` varchar(30) NOT NULL,
   `valor_cat` int(11) NOT NULL,
   PRIMARY KEY (`codigo_cat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -46,17 +46,17 @@ DROP TABLE IF EXISTS `entradas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entradas` (
-  `ide_ent` int(11) NOT NULL,
+  `ide_ent` varchar(30) NOT NULL,
   `placa` varchar(8) NOT NULL,
-  `fecha_ent` date NOT NULL,
-  `hora_ent` varchar(15) NOT NULL,
-  `codigo_cat` int(11) NOT NULL,
-  `nit` varchar(15) NOT NULL,
+  `fecha_ent` datetime NOT NULL,
+  `hora_ent` time NOT NULL,
+  `codigo_cat` varchar(30) DEFAULT NULL,
+  `nit` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`ide_ent`),
   KEY `entradas_codigo_cat_fk` (`codigo_cat`),
   KEY `entradas_nit_fk` (`nit`),
-  CONSTRAINT `entradas_codigo_cat_fk` FOREIGN KEY (`codigo_cat`) REFERENCES `categoria_vehiculo` (`codigo_cat`),
-  CONSTRAINT `entradas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`)
+  CONSTRAINT `entradas_codigo_cat_fk` FOREIGN KEY (`codigo_cat`) REFERENCES `categoria_vehiculo` (`codigo_cat`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `entradas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -82,10 +82,10 @@ CREATE TABLE `parqueadero` (
   `email` varchar(80) NOT NULL,
   `plaza_carro` int(11) NOT NULL,
   `plaza_moto` int(11) NOT NULL,
-  `codigo_usu` varchar(15) NOT NULL,
+  `codigo_usu` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`nit`),
   KEY `parqueadero_codigo_usu_fk` (`codigo_usu`),
-  CONSTRAINT `parqueadero_codigo_usu_fk` FOREIGN KEY (`codigo_usu`) REFERENCES `usuario` (`codigo_usu`)
+  CONSTRAINT `parqueadero_codigo_usu_fk` FOREIGN KEY (`codigo_usu`) REFERENCES `usuario` (`codigo_usu`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -106,14 +106,14 @@ DROP TABLE IF EXISTS `salidas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `salidas` (
-  `ide_sal` int(11) NOT NULL,
-  `fecha_sal` date NOT NULL,
-  `hora_sal` varchar(15) NOT NULL,
+  `ide_sal` varchar(30) NOT NULL,
+  `fecha_sal` datetime NOT NULL,
+  `hora_sal` time NOT NULL,
   `valor_pagar` int(11) NOT NULL,
-  `nit` varchar(15) NOT NULL,
+  `nit` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`ide_sal`),
   KEY `salidas_nit_fk` (`nit`),
-  CONSTRAINT `salidas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`)
+  CONSTRAINT `salidas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,4 +158,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-28 16:55:34
+-- Dump completed on 2022-08-29 10:38:54
