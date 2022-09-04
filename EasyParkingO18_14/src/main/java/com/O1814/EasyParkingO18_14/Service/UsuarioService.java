@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface UsuarioService {
     public Usuario save(Usuario usuario);
-    public void delete(Integer id);
-    public Usuario findById(Integer id);
+    public void delete(String id);
+    public Usuario findById(String id);
     public List<Usuario> findByAll();
     
     
