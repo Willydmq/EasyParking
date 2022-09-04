@@ -15,23 +15,29 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioDao usuarioDao;
 
     @Override
+    @Transactional(readOnly=false)
     public Usuario save(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return usuarioDao.save(usuario);
     }
 
     @Override
+    @Transactional(readOnly=false)
     public void delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       usuarioDao.deleteById(id);
     }
 
     @Override
+     @Transactional(readOnly=true)
     public Usuario findById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return usuarioDao.findById(id).orElse(null);
+      
     }
 
     @Override
+    @Transactional(readOnly=true)
     public List<Usuario> findByAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (List<Usuario>) usuarioDao.findAll();
+       
     }
     
     
