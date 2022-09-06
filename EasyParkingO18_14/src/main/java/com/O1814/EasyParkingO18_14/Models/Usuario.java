@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Table
-@Entity(name="Usuario")
+@Entity(name="usuario")
 public class Usuario implements Serializable {
     @Id
     @Column(name="codigo_usu")
