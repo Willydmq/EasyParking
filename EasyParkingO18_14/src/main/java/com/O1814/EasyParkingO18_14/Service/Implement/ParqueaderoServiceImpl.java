@@ -7,8 +7,8 @@ package com.O1814.EasyParkingO18_14.Service.Implement;
 
 /**
  *
- * @author Eddie Quintero
+ * @author CARLOS MORALES
  */
-public class ParqueaderoServiceImpl {
+public class ParqueaderoServiceImpl implements  {
     
 }

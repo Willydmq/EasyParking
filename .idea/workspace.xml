@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="117e9d7e-f1a1-48e8-8229-530a448e7f5b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/nb-configuration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Controller/UsuarioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Dao/UsuarioDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/EasyParkingO1814Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Models/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Service/Implement/UsuarioServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Service/UsuarioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/ServletInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/main/webapp/META-INF/context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/EasyParkingO18_14/src/test/java/com/O1814/EasyParkingO18_14/EasyParkingO1814ApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/MySQL/Modelo BSD easyParking.mwb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/MySQL/easyParking.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/EasyParking/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.O18-14_EasyParkingO18_14_war_0.0.1-SNAPSHOT/nb-configuration.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Dao/ParqueaderoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Dao/parqueaderoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Models/Parqueadero.java" beforeDir="false" afterPath="$PROJECT_DIR$/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Models/parqueadero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Service/Implement/ParqueaderoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Service/Implement/ParqueaderoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Service/ParqueaderoService.java" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,24 +19,38 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="ProjectId" id="2EQLi8wjsSLJ2JHdSUDD9NJqi1d" />
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Carlos Sanabria/Music/easyparking/EasyParking/EasyParkingO18_14/src/main/java/com/O1814/EasyParkingO18_14/Service",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "copyright"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Carlos Sanabria\Music\easyparking\EasyParking\EasyParkingO18_14\src\main\java\com\O1814\EasyParkingO18_14\Service" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -94,5 +93,16 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
