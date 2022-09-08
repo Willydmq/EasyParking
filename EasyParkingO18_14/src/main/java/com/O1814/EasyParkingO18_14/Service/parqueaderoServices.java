@@ -1,12 +1,8 @@
 package com.O1814.EasyParkingO18_14.Service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import com.O1814.EasyParkingO18_14.Dao.IUsuario;
-import com.O1814.EasyParkingO18_14.Models.usuario;
-import com.O1814.EasyParkingO18_14.Service.IusuarioServices;
+import org.springframework.stereotype.Repository;
+import com.O1814.EasyParkingO18_14.Models.parqueadero;
 
 @Repository
 

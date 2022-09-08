@@ -13,47 +13,50 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.O1814.EasyParkingO18_14.Models.parqueadero;
 import com.O1814.EasyParkingO18_14.Models.usuario;
 import com.O1814.EasyParkingO18_14.Service.IusuarioServices;
+import com.O1814.EasyParkingO18_14.Service.parqueaderoServices;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/usuario")
-public class Controlador {
+@RequestMapping("/parqueadero")
+public class contraladorParqueadero {
 
 	@Autowired
-	private IusuarioServices service;
+	private parqueaderoServices service;
 
 	@GetMapping("/list")
-	public List<usuario> consultAll(){
+	public List<parqueadero> consultAll(){
         return service.findAll();
     }
 
-	@GetMapping("/view/{codigo_usu}")
-	public usuario consultById(@PathVariable String codigo_usu){
-        return service.findById(codigo_usu);
+	@GetMapping("/view/{nit}")
+	public parqueadero consultById(@PathVariable String nit){
+        return service.findById(nit);
     }
 
 	@PostMapping("/add")
-	public ResponseEntity<usuario> add(@RequestBody usuario usuario) {
-		usuario record = service.save(usuario);
+	public ResponseEntity<parqueadero> add(@RequestBody parqueadero parqueadero) {
+		parqueadero record = service.save(parqueadero);
 		return new ResponseEntity<>(record, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete/{codigo_usu}")
-    public ResponseEntity<usuario> delete(@PathVariable String codigo_usu){
-        usuario record = service.findById(codigo_usu);
+	@DeleteMapping("/delete/{nit}")
+    public ResponseEntity<parqueadero> delete(@PathVariable String nit){
+        parqueadero record = service.findById(nit);
         if (record != null){
-            service.delete(codigo_usu);
+            service.delete(nit);
         }
         return new ResponseEntity<>(record, HttpStatus.OK);
     }
     
     @PutMapping("/update")
-    public ResponseEntity<usuario> update(@RequestBody usuario usuario){
-        usuario record = service.findById(usuario.getCodigo_usu());
+    public ResponseEntity<parqueadero> update(@RequestBody parqueadero parqueadero){
+    	parqueadero record = service.findById(parqueadero.getnit());
         if(record!=null){
-        	record.setNombre_usu(usuario.getNombre_usu());
+            record.setrazon_social(parqueadero.getrazon_social());
             service.save(record);
         }
         return new ResponseEntity<>(record, HttpStatus.OK);

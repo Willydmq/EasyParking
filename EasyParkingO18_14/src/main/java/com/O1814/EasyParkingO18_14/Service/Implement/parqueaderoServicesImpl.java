@@ -7,14 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.O1814.EasyParkingO18_14.Dao.IUsuario;
+import com.O1814.EasyParkingO18_14.Dao.parqueaderoDao;
+import com.O1814.EasyParkingO18_14.Models.parqueadero;
 import com.O1814.EasyParkingO18_14.Models.usuario;
 import com.O1814.EasyParkingO18_14.Service.IusuarioServices;
+import com.O1814.EasyParkingO18_14.Service.parqueaderoServices;
 
 @Service
-public class parqueaderoServices implements parqueaderoServices {
+public class parqueaderoServicesImpl implements parqueaderoServices {
 	
 	@Autowired
-	private parqueadero data;
+	private parqueaderoDao data;
 
 	@Override
 	public List<parqueadero> findAll() {
