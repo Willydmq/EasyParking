@@ -18,45 +18,43 @@ import com.O1814.EasyParkingO18_14.Service.IusuarioServices;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/parqueadero")
-public class Controlador{
+@RequestMapping("/usuario")
+public class Controlador {
 
 	@Autowired
-	private parqueaderoServices service;
+	private IusuarioServices service;
 
 	@GetMapping("/")
-	public List<parqueadero> consultAll(){
+	public List<usuario> consultAll(){
         return service.findAll();
     }
 
-	@GetMapping("/{nit}")
-	public parqueadero consultById(@PathVariable String nit){
-        return service.findById(nit);
+	@GetMapping("/{codigo_usu}")
+	public usuario consultById(@PathVariable String codigo_usu){
+        return service.findById(codigo_usu);
     }
 
 	@PostMapping("/")
-	public ResponseEntity<parqueadero> add(@RequestBody parqueadero parqueadero) {
-		parqueadero record = service.save(parqueadero);
-		
-		
+	public ResponseEntity<usuario> add(@RequestBody usuario usuario) {
+		usuario record = service.save(usuario);
 		return new ResponseEntity<>(record, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/{nit}")
-    public ResponseEntity<parqueadero> delete(@PathVariable String nit){
-        parqueadero foundRecord = service.findById(nit);
+	@DeleteMapping("/{codigo_usu}")
+    public ResponseEntity<usuario> delete(@PathVariable String codigo_usu){
+        usuario foundRecord = service.findById(codigo_usu);
         if (foundRecord != null){
-            service.delete(nit);
+            service.delete(codigo_usu);
         }
         return new ResponseEntity<>(foundRecord, HttpStatus.OK);
     }
     
     @PutMapping("/")
-    public ResponseEntity<parqueadero> update(@RequestBody parqueadero parqueadero){
-        parqueadero foundRecord = service.findById(parqueadero.getnit());
+    public ResponseEntity<usuario> update(@RequestBody usuario usuario){
+        usuario foundRecord = service.findById(usuario.getCodigo_usu());
         if(foundRecord!=null){
-            foundRecord.setrazon_social(parqueadero.getrazon_social());
-            service.save(parqueadero);
+            foundRecord.setNombre_usu(usuario.getNombre_usu());
+            service.save(usuario);
         }
         return new ResponseEntity<>(foundRecord, HttpStatus.OK);
     }

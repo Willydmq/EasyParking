@@ -8,33 +8,15 @@ import com.O1814.EasyParkingO18_14.Dao.IUsuario;
 import com.O1814.EasyParkingO18_14.Models.usuario;
 import com.O1814.EasyParkingO18_14.Service.IusuarioServices;
 
-@Service
-public class  implements IusuarioServices {
+@Repository
 
-	@Autowired
-	private IUsuario data;
+public interface parqueaderoServices {
+public List<parqueadero> findAll();
 
-	@Override
-	public List<usuario> findAll() {
-		return(List<usuario>) data.findAll();
+public parqueadero findById(String nit);
+
+public parqueadero save(parqueadero parqueadero);
+
+public void delete(String nit);
 	}
 
-	@Override
-	public usuario findById(String codigo_usu) {
-		return data.findById(codigo_usu).orElse(null);
-	}
-
-	@Override
-	@Transactional(readOnly = false)
-	public usuario save(usuario usuario) {
-		return data.save(usuario);
-	}
-
-	@Override
-	public void delete(String codigo_usu) {
-		data.deleteById(codigo_usu);
-		
-	}
-	
-
-}
