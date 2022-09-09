@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,68 +30,72 @@ public class parqueadero implements Serializable {
     @Column(name="plaza_moto")
     private String plaza_moto;
 
+    @ManyToOne
+    @JoinColumn(name="codigo_usu")
+    private usuario codigo_usu;
 
-    //  @ManyToOne
-    //  @JoinColumn(name="codigo_usu")
-    
-    public parqueadero (String nit, String razon_social, String email, String plaza_carro, 
-    		String plaza_moto) {
-    	this.nit = nit;
-    	this.razon_social = razon_social;
-    	this.email= email;
-    	this.plaza_carro= plaza_carro;
-    	this.plaza_moto= plaza_moto;
-    	
-        }
+	public parqueadero() {
+		super();
+	}
 
-        public parqueadero() {
-        }
-        
-        
-        // getter and setter 
+	public parqueadero(String nit, String razon_social, String email, String plaza_carro, String plaza_moto,
+			usuario codigo_usu) {
+		super();
+		this.nit = nit;
+		this.razon_social = razon_social;
+		this.email = email;
+		this.plaza_carro = plaza_carro;
+		this.plaza_moto = plaza_moto;
+		this.codigo_usu = codigo_usu;
+	}
 
-        public String getnit() {
-    	return nit;
-        }
+	public String getNit() {
+		return nit;
+	}
 
-        public void setnit(String nit) {
-    	this.nit = nit;
-        }
+	public void setNit(String nit) {
+		this.nit = nit;
+	}
 
-        public String getrazon_social() {
-    	return razon_social;
-        }
+	public String getRazon_social() {
+		return razon_social;
+	}
 
-        public void setrazon_social(String razon_social) {
-    	this.razon_social= razon_social;
-        }
-        
-        public String getemail() {
-        return email;
-        }
+	public void setRazon_social(String razon_social) {
+		this.razon_social = razon_social;
+	}
 
-        public void setemail(String email) {
-        this.email = email;
-        }
-        
-        public String getplaza_carro() {
-        return plaza_carro;
-        }
+	public String getEmail() {
+		return email;
+	}
 
-        public void setplaza_carro(String plazo_carro) {
-        this.plaza_carro = plaza_carro;
-        }
-        
-        public String getplaza_moto() {
-        return plaza_moto;
-        }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-        public void setplaza_moto(String plazo_moto) {
-        this.plaza_moto = plaza_moto;
-        }
-            
-        
-    
+	public String getPlaza_carro() {
+		return plaza_carro;
+	}
+
+	public void setPlaza_carro(String plaza_carro) {
+		this.plaza_carro = plaza_carro;
+	}
+
+	public String getPlaza_moto() {
+		return plaza_moto;
+	}
+
+	public void setPlaza_moto(String plaza_moto) {
+		this.plaza_moto = plaza_moto;
+	}
+
+	public usuario getCodigo_usu() {
+		return codigo_usu;
+	}
+
+	public void setCodigo_usu(usuario codigo_usu) {
+		this.codigo_usu = codigo_usu;
+	}
     
 }
 

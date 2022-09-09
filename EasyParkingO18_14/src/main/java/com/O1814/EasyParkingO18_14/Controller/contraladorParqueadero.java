@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.O1814.EasyParkingO18_14.Models.parqueadero;
 import com.O1814.EasyParkingO18_14.Models.usuario;
 import com.O1814.EasyParkingO18_14.Service.IusuarioServices;
@@ -54,9 +53,14 @@ public class contraladorParqueadero {
     
     @PutMapping("/update")
     public ResponseEntity<parqueadero> update(@RequestBody parqueadero parqueadero){
-    	parqueadero record = service.findById(parqueadero.getnit());
+    	parqueadero record = service.findById(parqueadero.getNit());
         if(record!=null){
-            record.setrazon_social(parqueadero.getrazon_social());
+            record.setRazon_social(parqueadero.getRazon_social());
+            record.setEmail(parqueadero.getEmail());
+            record.setPlaza_carro(parqueadero.getPlaza_carro());
+            record.setPlaza_moto(parqueadero.getPlaza_moto());
+            record.setCodigo_usu(parqueadero.getCodigo_usu());           
+            
             service.save(record);
         }
         return new ResponseEntity<>(record, HttpStatus.OK);

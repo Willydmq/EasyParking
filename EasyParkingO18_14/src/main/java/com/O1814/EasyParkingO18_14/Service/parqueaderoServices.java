@@ -7,12 +7,11 @@ import com.O1814.EasyParkingO18_14.Models.parqueadero;
 @Repository
 
 public interface parqueaderoServices {
-public List<parqueadero> findAll();
+	public List<parqueadero> findAll();
 
-public parqueadero findById(String nit);
+	public parqueadero findById(String nit);
 
-public parqueadero save(parqueadero parqueadero);
+	public parqueadero save(parqueadero parqueadero);
 
-public void delete(String nit);
-	}
-
+	public void delete(String nit);
+}
