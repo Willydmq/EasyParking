@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
--- Host: localhost    Database: easyparking
+-- Host: 127.0.0.1    Database: parking
 -- ------------------------------------------------------
 -- Server version	8.0.29
 
@@ -26,7 +26,7 @@ CREATE TABLE `categoria_vehiculo` (
   `codigo_cat` varchar(30) NOT NULL,
   `valor_cat` int NOT NULL,
   PRIMARY KEY (`codigo_cat`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +57,7 @@ CREATE TABLE `entradas` (
   KEY `entradas_nit_fk` (`nit`),
   CONSTRAINT `entradas_codigo_cat_fk` FOREIGN KEY (`codigo_cat`) REFERENCES `categoria_vehiculo` (`codigo_cat`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `entradas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,11 +82,9 @@ CREATE TABLE `parqueadero` (
   `email` varchar(80) NOT NULL,
   `plaza_carro` int NOT NULL,
   `plaza_moto` int NOT NULL,
-  `codigo_usu` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`nit`),
-  KEY `parqueadero_codigo_usu_fk` (`codigo_usu`),
-  CONSTRAINT `parqueadero_codigo_usu_fk` FOREIGN KEY (`codigo_usu`) REFERENCES `usuario` (`codigo_usu`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  UNIQUE KEY `nit_UNIQUE` (`nit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +112,7 @@ CREATE TABLE `salidas` (
   PRIMARY KEY (`ide_sal`),
   KEY `salidas_nit_fk` (`nit`),
   CONSTRAINT `salidas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +135,7 @@ CREATE TABLE `usuario` (
   `codigo_usu` varchar(15) NOT NULL,
   `nombre_usu` varchar(50) NOT NULL,
   PRIMARY KEY (`codigo_usu`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +144,34 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES ('1098685482','William Maldonado');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario_parqueadero`
+--
+
+DROP TABLE IF EXISTS `usuario_parqueadero`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario_parqueadero` (
+  `codigo_usu` varchar(15) NOT NULL,
+  `nit` varchar(15) NOT NULL,
+  PRIMARY KEY (`codigo_usu`,`nit`),
+  KEY `usuario_parqueadero_nit_fk` (`nit`),
+  CONSTRAINT `usuario_parqueadero_codigo_usu_fk` FOREIGN KEY (`codigo_usu`) REFERENCES `usuario` (`codigo_usu`),
+  CONSTRAINT `usuario_parqueadero_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario_parqueadero`
+--
+
+LOCK TABLES `usuario_parqueadero` WRITE;
+/*!40000 ALTER TABLE `usuario_parqueadero` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuario_parqueadero` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -158,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-30 10:38:00
+-- Dump completed on 2022-09-13 11:05:38
