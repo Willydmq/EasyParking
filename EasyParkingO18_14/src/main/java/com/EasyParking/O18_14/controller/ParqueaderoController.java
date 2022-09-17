@@ -9,13 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.EasyParking.O18_14.model.Parqueadero;
+import com.EasyParking.O18_14.model.Product;
 import com.EasyParking.O18_14.model.User;
 import com.EasyParking.O18_14.repository.ParqueaderoRepository;
 import com.EasyParking.O18_14.service.UserService;
@@ -68,5 +73,64 @@ public class ParqueaderoController {
 		
 		return new ResponseEntity<Map<String,String>>(response, HttpStatus.OK);
 	}
+	@GetMapping("/{id}")
+    public ResponseEntity<Map<String, Parqueadero>> getParqueadero(@PathVariable("id") Integer id,Principal principal) {
+        Map<String, Parqueadero> response  = new  HashMap<>();
+        String nit = principal.getName();
+        User currentUser = userService.getUser(nit);
+        Parqueadero parqueadero = parqueaderoRepository.findByUserAndId(currentUser, id);
+        if (parqueadero == null){
+            response.put("data", null);
+            return new ResponseEntity<Map<String, Parqueadero>>(response, HttpStatus.NOT_FOUND);
+        }
+        response.put("data", parqueadero);
+        return new ResponseEntity<Map<String, Parqueadero>>(response, HttpStatus.OK);
+    }
+	
+	
+		@DeleteMapping("/{id}/remove")
+	    public ResponseEntity<Map<String, String>> removeParqueadero(@PathVariable("id") Integer id, Principal principal) {
+	        Map<String, String> response  = new  HashMap<>();
+	        String nit = principal.getName();
+	        User currentUser = userService.getUser(nit);
+	        Parqueadero parqueadero = parqueaderoRepository.findByUserAndId(currentUser, id);
+	        if (parqueadero == null){
+	            response.put("message", "not found");
+	            return new ResponseEntity<Map<String, String>>(response, HttpStatus.NOT_FOUND);
+	        }
+	        parqueaderoRepository.delete(parqueadero);
+	        response.put("message", "parqueadero deleted");
+	        return new ResponseEntity<Map<String, String>>(response, HttpStatus.OK);
+	    }
+	    @PutMapping("/{id}")
+	    public ResponseEntity<Map<String, String>> updateParqueadero(@PathVariable("id") Integer id,@RequestBody Parqueadero parqueaderoUpdate,Principal principal) {
+	        Map<String, String> response  = new  HashMap<>();
+	        String nit = principal.getName();
+	        User currentUser = userService.getUser(nit);
+	        Parqueadero parqueadero = parqueaderoRepository.findByUserAndId(currentUser, id);
+	        if (parqueadero == null){
+	            response.put("message", "not found");
+	            return new ResponseEntity<Map<String, String>>(response, HttpStatus.NOT_FOUND);
+	        }
+	        parqueadero.setNit(parqueaderoUpdate.getNit());
+	        parqueadero.setUser(parqueaderoUpdate.getUser());
+	        parqueaderoRepository.save(parqueadero);
 
+	        response.put("message", "parqueadero updated");
+	        return new ResponseEntity<Map<String, String>>(response, HttpStatus.OK);
+	    }
 }
+
+
+	
+
+					
+		
+				
+				
+			
+			
+		
+	
+	
+
