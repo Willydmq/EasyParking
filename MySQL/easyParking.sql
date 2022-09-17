@@ -23,9 +23,10 @@ DROP TABLE IF EXISTS `categoria_vehiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoria_vehiculo` (
-  `codigo_cat` varchar(30) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `item_cat` varchar(45) NOT NULL,
   `valor_cat` int NOT NULL,
-  PRIMARY KEY (`codigo_cat`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,17 +47,17 @@ DROP TABLE IF EXISTS `entradas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entradas` (
-  `ide_ent` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `parqueadero_id` int NOT NULL,
+  `categoria_id` int NOT NULL,
   `placa` varchar(8) NOT NULL,
   `fecha_ent` datetime NOT NULL,
   `hora_ent` time NOT NULL,
-  `codigo_cat` varchar(30) DEFAULT NULL,
-  `nit` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`ide_ent`),
-  KEY `entradas_codigo_cat_fk` (`codigo_cat`),
-  KEY `entradas_nit_fk` (`nit`),
-  CONSTRAINT `entradas_codigo_cat_fk` FOREIGN KEY (`codigo_cat`) REFERENCES `categoria_vehiculo` (`codigo_cat`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `entradas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`) ON DELETE SET NULL ON UPDATE CASCADE
+  PRIMARY KEY (`id`),
+  KEY `entradas_id_parqueadero_fk_idx` (`parqueadero_id`),
+  KEY `entradas_categoria_id_fk_idx` (`categoria_id`),
+  CONSTRAINT `entradas_categoria_id_fk` FOREIGN KEY (`categoria_id`) REFERENCES `categoria_vehiculo` (`id`),
+  CONSTRAINT `entradas_parqueadero_id_fk` FOREIGN KEY (`parqueadero_id`) REFERENCES `parqueadero` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -77,13 +78,16 @@ DROP TABLE IF EXISTS `parqueadero`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `parqueadero` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
   `nit` varchar(15) NOT NULL,
   `razon_social` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `plaza_carro` int NOT NULL,
   `plaza_moto` int NOT NULL,
-  PRIMARY KEY (`nit`),
-  UNIQUE KEY `nit_UNIQUE` (`nit`)
+  PRIMARY KEY (`id`),
+  KEY `parqueadero_id_fk_idx` (`user_id`),
+  CONSTRAINT `parqueadero_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -104,14 +108,14 @@ DROP TABLE IF EXISTS `salidas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `salidas` (
-  `ide_sal` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `parqueadero_id` int NOT NULL,
   `fecha_sal` datetime NOT NULL,
   `hora_sal` time NOT NULL,
   `valor_pagar` int NOT NULL,
-  `nit` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`ide_sal`),
-  KEY `salidas_nit_fk` (`nit`),
-  CONSTRAINT `salidas_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`) ON DELETE SET NULL ON UPDATE CASCADE
+  PRIMARY KEY (`id`),
+  KEY `salidas_id_parqueadero_fk_idx` (`parqueadero_id`),
+  CONSTRAINT `salidas_parqueadero_id_fk` FOREIGN KEY (`parqueadero_id`) REFERENCES `parqueadero` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -125,53 +129,28 @@ LOCK TABLES `salidas` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `codigo_usu` varchar(15) NOT NULL,
-  `nombre_usu` varchar(50) NOT NULL,
-  PRIMARY KEY (`codigo_usu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `password` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES ('1098685482','William Maldonado');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario_parqueadero`
---
-
-DROP TABLE IF EXISTS `usuario_parqueadero`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario_parqueadero` (
-  `codigo_usu` varchar(15) NOT NULL,
-  `nit` varchar(15) NOT NULL,
-  PRIMARY KEY (`codigo_usu`,`nit`),
-  KEY `usuario_parqueadero_nit_fk` (`nit`),
-  CONSTRAINT `usuario_parqueadero_codigo_usu_fk` FOREIGN KEY (`codigo_usu`) REFERENCES `usuario` (`codigo_usu`),
-  CONSTRAINT `usuario_parqueadero_nit_fk` FOREIGN KEY (`nit`) REFERENCES `parqueadero` (`nit`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario_parqueadero`
---
-
-LOCK TABLES `usuario_parqueadero` WRITE;
-/*!40000 ALTER TABLE `usuario_parqueadero` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario_parqueadero` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (5,'$2a$10$yVHTfnjk1s.pxFpajVz3yuBTNKzth3I.KMTCRw4JeL.OpF7tAwBtW','willi');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -183,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-13 11:05:38
+-- Dump completed on 2022-09-16 21:41:35

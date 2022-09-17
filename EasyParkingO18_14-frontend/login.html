@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link id="login-css" href="css/login.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first my-5">
+          <img id="icon" src="images/logo.png" alt="EasyParking logo">
+        </div>
+
+        <div>
+          <p class="text-danger" id="error-text"></p>
+        </div>
+        <div>
+          <p class="text-success" id="message-text"></p>
+        </div>
+        <!-- Login Form -->
+        <form onsubmit="login(); return false;" action method="post">
+          <input class="fadeIn second" id="username" name="username" type="text" required placeholder="username">
+          <input class="fadeIn third" id="password" name="password" type="password" required placeholder="password">
+          <input class="fadeIn fourth mt-3" type="submit" value="Log In">
+        </form>
+        <a class="text-info mb-3" href="signup.html">Sign Up</a>
+      </div>
+    </div>
+	  <script src="js/auth.js"></script>
+    <script src="js/request.js"></script>
+    <script src="js/user.js"></script>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const message = params.get("message");
+      const error = params.get("error");
+      window.onload = function () {
+        if (message) {
+          const messageElement = document.getElementById("message-text");
+          messageElement.innerText = message;
+        } else if (error) {
+          const errorElement = document.getElementById("error-text");
+          errorElement.innerText = error;
+        }
+      };
+    </script>
+  </body>
+</html>
