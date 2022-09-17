@@ -1,18 +1,17 @@
-
-# Mision TIC  2022 - Base proyecto ciclo 3 - Grupo O18-14
+# Mision TIC 2022 - Base proyecto ciclo 3 - Grupo O18-14
 
 ![EASY PARKING](logo.png)
 
 # Componenentes
-1. **EasyParkingO18_14-backend**: 
-2. **EasyParkingO18_14-frontend**: 
+
+1. **EasyParkingO18_14-backend**: [Repositorio del backend](https://gitlab.com/O1814/EasyParking/-/tree/main/EasyParkingO18_14-backend)
+2. **EasyParkingO18_14-frontend**: [Repositorio del frontend](https://gitlab.com/O1814/EasyParking/-/tree/main/EasyParkingO18_14-frontend)
 
 ### Mundo del problema
 
 Actualmente en Colombia y según datos del registro único nacional de tránsito RUNT en Colombia hay más de 17 millones de vehículos a cierre de 2021. (Avendaño, 2022). A raíz del gran número de vehículos en el país han surgido varios problemas de movilidad donde uno de esos factores es debido a que los vehículos que circulan por la calle están en busca de estacionamientos, y los que ya están ubicados en algún estacionamiento también generan más congestión lo que hace que los automotores sin opciones de parqueo deban esperar por un cupo para guardar su automóvil o en caso contrario parquearlos en algún lugar libre.
 Sumado a lo anterior en muchos estacionamientos la velocidad con la cual se gestiona y se controla la entrada y salida de vehículos no es la más rápida, por lo que sí a la gran cantidad de coches se le suma la demora en un parqueadero desencadena un problema mucho mayor a resolver, y más teniendo en cuenta que año tras año el sector automotor va en aumento.
- Ante esta situación presentada surge la necesidad de construir una aplicación ‘Software’ que permita brindar una solución más rápida y práctica en los parqueaderos para dar solución no solo en nivel de productividad, sino también en temas de (reducción de hurtos, operatividad, costos, control de tiempos de entrada y salida, ubicación del vehículo, identificación de automotores, etc..) donde finalmente se  mitigarán problemas y se atenderá de una mejor manera la alta demanda vehicular.
-
+Ante esta situación presentada surge la necesidad de construir una aplicación ‘Software’ que permita brindar una solución más rápida y práctica en los parqueaderos para dar solución no solo en nivel de productividad, sino también en temas de (reducción de hurtos, operatividad, costos, control de tiempos de entrada y salida, ubicación del vehículo, identificación de automotores, etc..) donde finalmente se mitigarán problemas y se atenderá de una mejor manera la alta demanda vehicular.
 
 ### Objetivo general
 
@@ -20,12 +19,11 @@ Construir una aplicación ‘Software’ dirigido a personas y microempresarios 
 
 ### Objectivos espesificos
 
-•	Identificar los procesos de facturación, control de registros, ingresos y egresos en el área de administración para la obtención de un esquema dinámico y factible que pueda ser entendible y fácil en su uso asegurando la conectividad del Software-dueño-conductor.
+• Identificar los procesos de facturación, control de registros, ingresos y egresos en el área de administración para la obtención de un esquema dinámico y factible que pueda ser entendible y fácil en su uso asegurando la conectividad del Software-dueño-conductor.
 
-•	Analizar los puntos críticos de gestión que representen un problema concerniente a los procesos estratégicos en el manejo operativo, proceso de instalación y personal con el fin de resolver las necesidades de sistematización en el aparcamiento.
+• Analizar los puntos críticos de gestión que representen un problema concerniente a los procesos estratégicos en el manejo operativo, proceso de instalación y personal con el fin de resolver las necesidades de sistematización en el aparcamiento.
 
-•	Desarrollar un Software libre que integre la información modular y versátil donde el dueño adquiera detalle de los procesos gestionables de su microempresa; y de igual forma, pueda administrar y tramitar sus necesidades contables, orientado a mejorar los procesos tecnológicos del estacionamiento resaltando la conectividad del cliente-seguridad-vehículo.
-
+• Desarrollar un Software libre que integre la información modular y versátil donde el dueño adquiera detalle de los procesos gestionables de su microempresa; y de igual forma, pueda administrar y tramitar sus necesidades contables, orientado a mejorar los procesos tecnológicos del estacionamiento resaltando la conectividad del cliente-seguridad-vehículo.
 
 ### Requerimientos funcionales
 
@@ -95,7 +93,7 @@ Construir una aplicación ‘Software’ dirigido a personas y microempresarios 
   </tr>
 </table>
 
-----
+---
 
 <table>
 <colgroup> 
@@ -128,7 +126,7 @@ Construir una aplicación ‘Software’ dirigido a personas y microempresarios 
   </tr>
 </table>
 
-----
+---
 
 <table>
 <colgroup> 
@@ -161,29 +159,27 @@ Construir una aplicación ‘Software’ dirigido a personas y microempresarios 
   </tr>
 </table>
 
-----
+---
 
 ### Requerimientos no funcionales
 
-1.	<b>Eficiencia</b>
-●	El sistema podrá procesar e identificar la entrada y salida de automóviles al tiempo en las diferentes entradas del parqueadero.
-●	La base de datos se actualizará para todos los usuarios en el momento que procese la entrada o salida del vehículo.
-●	Se podrá llevar un registro diario de los ingresos y automóviles, el cual podrá ser graficado y analizado estadísticamente.
+1. <b>Eficiencia</b>
+   ● El sistema podrá procesar e identificar la entrada y salida de automóviles al tiempo en las diferentes entradas del parqueadero.
+   ● La base de datos se actualizará para todos los usuarios en el momento que procese la entrada o salida del vehículo.
+   ● Se podrá llevar un registro diario de los ingresos y automóviles, el cual podrá ser graficado y analizado estadísticamente.
 
+2. <b>Usabilidad</b>
+   ● El sistema será compatible con navegadores Firefox, Chrome y Edge.
+   ● La curva de instrucción deberá ser escalada en menos de 5 horas.
 
-2.	<b>Usabilidad</b>
-●	El sistema será compatible con navegadores Firefox, Chrome y Edge.
-●	La curva de instrucción deberá ser escalada en menos de 5 horas.
+3. <b>Disponibilidad</b>
+   ● a) El sistema tendrá un diseño Responsive Design que se ajustará a todo tipo de monitores y resoluciones de pantalla.
+   ● b) Se dispondrá de una documentación manual para el uso del sistema.
 
-3.	<b>Disponibilidad</b>
-●	a)  El sistema tendrá un diseño Responsive Design que se ajustará a todo tipo de monitores y resoluciones de pantalla.
-●	b)    Se dispondrá de una documentación manual para el uso del sistema.
+4. <b>Seguridad</b>
+   ● a) La base de datos funcionará sobre MySQL.
+   ● b) Se realizará una copia de seguridad global, diaria, cada que la jornada laboral finalice.
 
-4.	<b>Seguridad</b>
-●	a)    La base de datos funcionará sobre MySQL.
-●	b)  Se realizará una copia de seguridad global, diaria, cada que la jornada laboral finalice. 
-
-   
 ### Modelo de datos planteado
 
 ![Base de datos](modelo.png)
@@ -209,7 +205,7 @@ Construir una aplicación ‘Software’ dirigido a personas y microempresarios 
 ![Historias de usuario sprints 4](story4.png)
 
 ### Demo
+
 Prueba la [Demo](https://misionticproyectobaseciclo3-frontend-ingdeiver.vercel.app/login.html).
 
 ![Demo](demo.png)
-
