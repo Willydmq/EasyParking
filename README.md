@@ -164,21 +164,30 @@ Construir una aplicación ‘Software’ dirigido a personas y microempresarios 
 ### Requerimientos no funcionales
 
 1. <b>Eficiencia</b>
-   ● El sistema podrá procesar e identificar la entrada y salida de automóviles al tiempo en las diferentes entradas del parqueadero.
-   ● La base de datos se actualizará para todos los usuarios en el momento que procese la entrada o salida del vehículo.
-   ● Se podrá llevar un registro diario de los ingresos y automóviles, el cual podrá ser graficado y analizado estadísticamente.
+    <ul>
+      <li> El sistema podrá procesar e identificar la entrada y salida de automóviles al tiempo en las diferentes entradas del parqueadero.</li>
+      <li>La base de datos se actualizará para todos los usuarios en el momento que procese la entrada o salida del vehículo.</li>
+      <li>Se podrá llevar un registro diario de los ingresos y automóviles, el cual podrá ser graficado y analizado estadísticamente.</li>
+   </ul>
 
 2. <b>Usabilidad</b>
-   ● El sistema será compatible con navegadores Firefox, Chrome y Edge.
-   ● La curva de instrucción deberá ser escalada en menos de 5 horas.
+   <ul>
+   <li> El sistema será compatible con navegadores Firefox, Chrome y Edge.</li> 
+   <li> La curva de instrucción deberá ser escalada en menos de 5 horas.</li> 
+   </ul>
+
 
 3. <b>Disponibilidad</b>
-   ● a) El sistema tendrá un diseño Responsive Design que se ajustará a todo tipo de monitores y resoluciones de pantalla.
-   ● b) Se dispondrá de una documentación manual para el uso del sistema.
+   <ul>
+   <li> El sistema tendrá un diseño Responsive Design que se ajustará a todo tipo de monitores y resoluciones de pantalla.</li> 
+   <li> Se dispondrá de una documentación manual para el uso del sistema.</li> 
+    </ul>
 
 4. <b>Seguridad</b>
-   ● a) La base de datos funcionará sobre MySQL.
-   ● b) Se realizará una copia de seguridad global, diaria, cada que la jornada laboral finalice.
+   <ul>
+   <li> La base de datos funcionará sobre MySQL.</li> 
+   <li> Se realizará una copia de seguridad global, diaria, cada que la jornada laboral finalice.</li> 
+    </ul>
 
 ### Modelo de datos planteado
 
