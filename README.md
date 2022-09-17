@@ -1,92 +1,203 @@
-# EasyParking
+
+# Mision TIC  2022 - Base proyecto ciclo 3 - Grupo O18-14
+
+![EASY PARKING](logo.png)
+
+# Componenentes
+1. **EasyParkingO18_14-backend**: 
+2. **EasyParkingO18_14-frontend**: 
+
+### Mundo del problema
+
+Actualmente en Colombia y según datos del registro único nacional de tránsito RUNT en Colombia hay más de 17 millones de vehículos a cierre de 2021. (Avendaño, 2022). A raíz del gran número de vehículos en el país han surgido varios problemas de movilidad donde uno de esos factores es debido a que los vehículos que circulan por la calle están en busca de estacionamientos, y los que ya están ubicados en algún estacionamiento también generan más congestión lo que hace que los automotores sin opciones de parqueo deban esperar por un cupo para guardar su automóvil o en caso contrario parquearlos en algún lugar libre.
+Sumado a lo anterior en muchos estacionamientos la velocidad con la cual se gestiona y se controla la entrada y salida de vehículos no es la más rápida, por lo que sí a la gran cantidad de coches se le suma la demora en un parqueadero desencadena un problema mucho mayor a resolver, y más teniendo en cuenta que año tras año el sector automotor va en aumento.
+ Ante esta situación presentada surge la necesidad de construir una aplicación ‘Software’ que permita brindar una solución más rápida y práctica en los parqueaderos para dar solución no solo en nivel de productividad, sino también en temas de (reducción de hurtos, operatividad, costos, control de tiempos de entrada y salida, ubicación del vehículo, identificación de automotores, etc..) donde finalmente se  mitigarán problemas y se atenderá de una mejor manera la alta demanda vehicular.
 
 
+### Objetivo general
 
-## Getting started
+Construir una aplicación ‘Software’ dirigido a personas y microempresarios para el rubro de estacionamiento en las zonas urbanas-comerciales con el fin de llevar nuevos procesos de transformación digital
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Objectivos espesificos
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+•	Identificar los procesos de facturación, control de registros, ingresos y egresos en el área de administración para la obtención de un esquema dinámico y factible que pueda ser entendible y fácil en su uso asegurando la conectividad del Software-dueño-conductor.
 
-## Add your files
+•	Analizar los puntos críticos de gestión que representen un problema concerniente a los procesos estratégicos en el manejo operativo, proceso de instalación y personal con el fin de resolver las necesidades de sistematización en el aparcamiento.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+•	Desarrollar un Software libre que integre la información modular y versátil donde el dueño adquiera detalle de los procesos gestionables de su microempresa; y de igual forma, pueda administrar y tramitar sus necesidades contables, orientado a mejorar los procesos tecnológicos del estacionamiento resaltando la conectividad del cliente-seguridad-vehículo.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/O1814/EasyParking.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
+### Requerimientos funcionales
 
-- [ ] [Set up project integrations](https://gitlab.com/O1814/EasyParking/-/settings/integrations)
+---
 
-## Collaborate with your team
+<table>
+  <tr>
+    <th>Nombre</th>
+    <td>Registro en el sistema</td>
+  </tr>
+  <tr>
+    <th>Prioridad</th>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <th>Descripción</th>
+    <td>
+        <p>
+    El administrador del parqueadero deberá registrarse en el sistema para poder usar Easy Parking, esto por medio de un campo en la interfaz donde el usuario ingresa su tipo de documento, número de identidad, contraseña y por último confirmación de esta. Consiguiente a esto, el sistema desplegará uno de los siguientes mensajes: "usuario registrado" si el usuario se ha registrado correctamente  o "usuario ya existe"
+    </p>
+    </td>
+  </tr>
+  <tr>
+    <th>Historias de usuario</th>
+    <td>
+        <ul>
+        <li>El sistema debe validar si los datos ingresados son correctos (el número de documento debe ser        exclusivamente numérico). <br>
+            ●	El sistema valida si es un nuevo usuario, o si ya existe dentro de la base de datos. <br>
+            ●	El sistema guarda los datos ingresados en la base de datos asociada.</li>
+        </ul>
+    </td>
+  </tr>
+</table>
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+---
 
-## Test and Deploy
+<table>
+  <tr>
+    <th>Nombre</th>
+    <td>Inicio de sesión</td>
+  </tr>
+  <tr>
+    <th>Prioridad</th>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <th>Descripción</th>
+    <td>
+        <p>
+    Cada vez que el administrador desee utilizar Easy Parking deberá iniciar sesión en la aplicación. Para esto, existe un campo en la interfaz donde el usuario será capaz de ingresar su número de documento de identidad y contraseña. Posteriormente, el sistema desplegará uno de los siguientes mensajes: "usuario no registrado" si el usuario no figura en la base de datos, “contraseña incorrecta” si el usuario figura en la base de datos pero la contraseña no fue ingresada correctamente y finalmente, lleva al usuario a la pantalla principal de Easy Parking.
+    </p>
+    </td>
+  </tr>
+  <tr>
+    <th>Historias de usuario</th>
+    <td>
+        <ul>
+        <li>El sistema valida si los datos ingresados figuran correctamente en la base de datos.</li>
+        </ul>
+    </td>
+  </tr>
+</table>
 
-Use the built-in continuous integration in GitLab.
+----
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+<table>
+  <tr>
+    <th>Nombre</th>
+    <td>Ingresar un carro</td>
+  </tr>
+  <tr>
+    <th>Prioridad</th>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <th>Descripción</th>
+    <td>
+        <p>
+    El administrador ingresa un carro y lo ubica en la plaza que desee. Para esto el administrador dispondrá de varios campos en los que podrá ingresar la placa del automotor, la hora de llegada y la plaza en donde se ubicó, estos datos irán directamente a la base de datos y mostrará los siguientes mensajes: “Error al ingresar” en el caso de que haya un error sintáctico en los datos y “Se ingresó correctamente” en el caso de que todos los datos ingresados sean correctos. Adicionalmente, al ingresar el automotor empieza un contador desde la hora ingresada, para así hacer el cálculo y la facturación.
+    </p>
+    </td>
+  </tr>
+  <tr>
+    <th>Historias de usuario</th>
+    <td>
+        <ul>
+        <li>Se debe tener acceso a la base de datos para poder ingresar los datos en esta.<br>
+            ●	Al ingresar un cliente empezará un contador desde la hora ingresada. </li>
+        </ul>
+    </td>
+  </tr>
+</table>
 
-***
+----
 
-# Editing this README
+<table>
+  <tr>
+    <th>Nombre</th>
+    <td>Actualizar una plaza</td>
+  </tr>
+  <tr>
+    <th>Prioridad</th>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <th>Descripción</th>
+    <td>
+        <p>
+    El administrador actualiza la plaza deseada ya sea para corregir los datos del automotor que ingresó o para actualizar la plaza a vacío cuando un automotor salga del parqueadero.
+    </p>
+    </td>
+  </tr>
+  <tr>
+    <th>Historias de usuario</th>
+    <td>
+        <ul>
+        <li>El sistema debe acceder a la base de datos y actualizar las casillas modificadas<br>
+            ●	Terminar el contador de tiempo y mostrar un mensaje con el precio a cobrar.</li>
+        </ul>
+    </td>
+  </tr>
+</table>
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+----
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Requerimientos no funcionales
 
-## Name
-Choose a self-explaining name for your project.
+1.	<b>Eficiencia</b>
+●	El sistema podrá procesar e identificar la entrada y salida de automóviles al tiempo en las diferentes entradas del parqueadero.
+●	La base de datos se actualizará para todos los usuarios en el momento que procese la entrada o salida del vehículo.
+●	Se podrá llevar un registro diario de los ingresos y automóviles, el cual podrá ser graficado y analizado estadísticamente.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+2.	<b>Usabilidad</b>
+●	El sistema será compatible con navegadores Firefox, Chrome y Edge.
+●	La curva de instrucción deberá ser escalada en menos de 5 horas.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+3.	<b>Disponibilidad</b>
+●	a)  El sistema tendrá un diseño Responsive Design que se ajustará a todo tipo de monitores y resoluciones de pantalla.
+●	b)    Se dispondrá de una documentación manual para el uso del sistema.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+4.	<b>Seguridad</b>
+●	a)    La base de datos funcionará sobre MySQL.
+●	b)  Se realizará una copia de seguridad global, diaria, cada que la jornada laboral finalice. 
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+   
+### Modelo de datos planteado
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+![Base de datos](modelo.png)
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### Gestión del marco de trabajo Scrum en Jira
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+##### Epicas
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+![Epicas](epics.png)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+##### Sprints
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+![Sprints](sprints.png)
 
-## License
-For open source projects, say how it is licensed.
+##### Historias de usuario
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+![Historias de usuario sprints 1](story1.png)
+
+![Historias de usuario sprints 2](story2.png)
+
+![Historias de usuario sprints 3](story3.png)
+
+![Historias de usuario sprints 4](story4.png)
+
+### Demo
+Prueba la [Demo](https://misionticproyectobaseciclo3-frontend-ingdeiver.vercel.app/login.html).
+
+![Demo](demo.png)
+
