@@ -1,17 +1,44 @@
-package com.O1814.EasyParkingO18_14.Service;
+
+package com.O1814.EasyParkingO18_14.Service.Implement;
+
 
 import java.util.List;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.O1814.EasyParkingO18_14.Dao.IUsuario;
+import com.O1814.EasyParkingO18_14.Dao.parqueaderoDao;
 import com.O1814.EasyParkingO18_14.Models.parqueadero;
+import com.O1814.EasyParkingO18_14.Models.usuario;
+import com.O1814.EasyParkingO18_14.Service.IusuarioServices;
+import com.O1814.EasyParkingO18_14.Service.parqueaderoServices;
 
-@Repository
+@Service
+public class parqueaderoServicesImpl implements parqueaderoServices {
+	
+	@Autowired
+	private parqueaderoDao data;
 
-public interface parqueaderoServices {
-	public List<parqueadero> findAll();
+	@Override
+	public List<parqueadero> findAll() {
+		return(List<parqueadero>) data.findAll();
+	}
 
-	public parqueadero findById(String nit);
+	@Override
+	public parqueadero findById(String nit) {
+		return data.findById(nit).orElse(null);
+	}
 
-	public parqueadero save(parqueadero parqueadero);
+	@Override
+	@Transactional(readOnly = false)
+	public parqueadero save(parqueadero parqueadero) {
+		return data.save(parqueadero);
+	}
 
-	public void delete(String nit);
+	@Override
+	public void delete(String nit) {
+		data.deleteById(nit);
+		
+	}
+	
 }
