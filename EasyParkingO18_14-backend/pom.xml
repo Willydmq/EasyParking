@@ -15,11 +15,9 @@
 	<name>EasyParkingO18_14</name>
 	<description>frontend</description>
 	<properties>
-<<<<<<< HEAD
+
 		<java.version>1.8</java.version>
-=======
-		<java.version>17</java.version>
->>>>>>> 696107a78742b2a3423f9a0398af5e1e0942822a
+		
 	</properties>
 	<dependencies>
 		<dependency>

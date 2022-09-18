@@ -9,25 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-=======
+
 import org.springframework.web.bind.annotation.PostMapping;
->>>>>>> 696107a78742b2a3423f9a0398af5e1e0942822a
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.EasyParking.O18_14.model.Parqueadero;
-<<<<<<< HEAD
+
 import com.EasyParking.O18_14.model.Product;
-=======
->>>>>>> 696107a78742b2a3423f9a0398af5e1e0942822a
+
 import com.EasyParking.O18_14.model.User;
 import com.EasyParking.O18_14.repository.ParqueaderoRepository;
 import com.EasyParking.O18_14.service.UserService;
@@ -80,7 +79,7 @@ public class ParqueaderoController {
 		
 		return new ResponseEntity<Map<String,String>>(response, HttpStatus.OK);
 	}
-<<<<<<< HEAD
+
 	@GetMapping("/{id}")
     public ResponseEntity<Map<String, Parqueadero>> getParqueadero(@PathVariable("id") Integer id,Principal principal) {
         Map<String, Parqueadero> response  = new  HashMap<>();
@@ -121,7 +120,12 @@ public class ParqueaderoController {
 	            return new ResponseEntity<Map<String, String>>(response, HttpStatus.NOT_FOUND);
 	        }
 	        parqueadero.setNit(parqueaderoUpdate.getNit());
-	        parqueadero.setUser(parqueaderoUpdate.getUser());
+	        parqueadero.setRazon_social(parqueaderoUpdate.getRazon_social());
+                parqueadero.setEmail(parqueaderoUpdate.getEmail());
+                parqueadero.setPlaza_carro(parqueaderoUpdate.getPlaza_carro());
+                parqueadero.setPlaza_moto(parqueaderoUpdate.getPlaza_moto());
+                
+                
 	        parqueaderoRepository.save(parqueadero);
 
 	        response.put("message", "parqueadero updated");
@@ -142,7 +146,4 @@ public class ParqueaderoController {
 	
 	
 
-=======
 
-}
->>>>>>> 696107a78742b2a3423f9a0398af5e1e0942822a
