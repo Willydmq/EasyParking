@@ -29,8 +29,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = false)
-    private List<Parqueadero> listParqueaderos = new ArrayList<>();
+    //@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = false)
+    //private List<Parqueadero> listParqueaderos = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -56,13 +56,13 @@ public class User {
         this.password = password;
     }
 
-	public List<Parqueadero> getListParqueaderos() {
+	/*public List<Parqueadero> getListParqueaderos() {
 		return listParqueaderos;
 	}
 
 	public void setListParqueaderos(List<Parqueadero> listParqueaderos) {
 		this.listParqueaderos = listParqueaderos;
 	}
-    
+    */
 
 }

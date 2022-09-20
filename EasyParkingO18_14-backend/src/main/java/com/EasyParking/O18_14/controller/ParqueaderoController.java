@@ -22,16 +22,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.EasyParking.O18_14.model.Parqueadero;
 import com.EasyParking.O18_14.model.User;
 import com.EasyParking.O18_14.repository.ParqueaderoRepository;
+import com.EasyParking.O18_14.service.ParqueaderoService;
 import com.EasyParking.O18_14.service.UserService;
 
 import org.springframework.data.domain.Sort;
 
-@CrossOrigin(origins = "*")
+
 @RestController
-@RequestMapping(path = "/product")
+@CrossOrigin(origins = "*")
+@RequestMapping(path = "/parqueadero")
 public class ParqueaderoController {
 	
-	@Autowired
+/*	@Autowired
 	private ParqueaderoRepository parqueaderoRepository;
 	
 	@Autowired
@@ -53,7 +55,7 @@ public class ParqueaderoController {
 		return new ResponseEntity<List<Parqueadero>>(parqueaderos,HttpStatus.OK);
 	}
 	
-	@PostMapping("")
+	@PostMapping(value = "/")
 	public ResponseEntity<Map<String, String>> saveParqueadero(@RequestBody Parqueadero parqueadero, Principal principal){
 		Map<String, String> response = new HashMap<>();
 		String nit = principal.getName();
@@ -124,6 +126,52 @@ public class ParqueaderoController {
 		response.put("message", "parqueadero updated");
 		return new ResponseEntity<Map<String,String>>(response, HttpStatus.OK);
 		
+	}*/
+	
+	@Autowired
+	private ParqueaderoService parqueaderoService;
+	
+	@PostMapping(value = "/")
+	public ResponseEntity<Parqueadero> agregar(@RequestBody Parqueadero parqueadero){
+		Parqueadero obj = parqueaderoService.save(parqueadero);
+		return new ResponseEntity<>(obj,HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Parqueadero> eliminar(@PathVariable Integer id){
+		Parqueadero obj = parqueaderoService.findById(id);
+		if (obj != null) {
+			parqueaderoService.delete(id);
+		} else {
+			return new ResponseEntity<>(obj, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(obj, HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/")
+	public ResponseEntity<Parqueadero> editar(@RequestBody Parqueadero parqueadero){
+		Parqueadero obj = parqueaderoService.findById(parqueadero.getId());
+		if (obj != null) {
+			obj.setNit(parqueadero.getNit());
+			obj.setRazon_social(parqueadero.getRazon_social());
+			obj.setEmail(parqueadero.getEmail());
+			obj.setPlaza_carro(parqueadero.getPlaza_carro());
+			obj.setPlaza_moto(parqueadero.getPlaza_moto());
+			parqueaderoService.save(obj);
+		} else {
+			return new ResponseEntity<>(obj, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(obj, HttpStatus.OK);
+	}
+	
+	@GetMapping("/")
+	public List<Parqueadero> consultarTodo(){
+		return parqueaderoService.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public Parqueadero consultaPorId(@PathVariable Integer id) {
+		return parqueaderoService.findById(id);
 	}
 
 }
