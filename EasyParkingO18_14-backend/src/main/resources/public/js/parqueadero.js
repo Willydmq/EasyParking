@@ -76,6 +76,7 @@ function readProducts() {
                               <td>${data[i].email}</td>
                               <td>${data[i].plaza_carro}</td>
                               <td>${data[i].plaza_moto}</td>
+                              <td hidden>${data[i].user.id}</td>
                               <td>
                                   <a href="javascript:editProduct(${data[i].id})" class="btn btn-warning">Editar</span></a>
                                   <a href="javascript:deleteProduct(${data[i].id})"   class="btn btn-danger">Borrar</a>
@@ -110,7 +111,9 @@ function addProduct() {
     email: $("#email").val(),
     plaza_carro: $("#plaza_carro").val(),
     plaza_moto: $("#plaza_moto").val(),
-    //user_id: $("#user_id").val(),
+    user: {
+      id: $("#user_id").val(),
+    },
     //idTypeProduct: {
     //idTypeProduct: $("#tipo2").val(),
     //},
@@ -132,7 +135,7 @@ function addProduct() {
       $("#email").val("");
       $("#plaza_carro").val("");
       $("#plaza_moto").val("");
-      //$("#user_id").val("");
+      $("#user_id").val("");
       location.reload();
     },
   });

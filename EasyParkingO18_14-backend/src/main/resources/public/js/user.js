@@ -7,7 +7,7 @@ async function saveUser() {
       username,
       password,
     });
-    window.location = "login.html?message=User created";
+    window.location = "index.html?message=User created";
   } catch (error) {
     console.error(error.toString());
   }

@@ -25,9 +25,8 @@ public class Parqueadero implements Serializable {
 	private Integer id;
 	
 	@NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
 	private User user;
 	
 	@NotNull

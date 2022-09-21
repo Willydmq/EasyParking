@@ -157,6 +157,7 @@ public class ParqueaderoController {
 			obj.setEmail(parqueadero.getEmail());
 			obj.setPlaza_carro(parqueadero.getPlaza_carro());
 			obj.setPlaza_moto(parqueadero.getPlaza_moto());
+			obj.setUser(parqueadero.getUser());
 			parqueaderoService.save(obj);
 		} else {
 			return new ResponseEntity<>(obj, HttpStatus.INTERNAL_SERVER_ERROR);

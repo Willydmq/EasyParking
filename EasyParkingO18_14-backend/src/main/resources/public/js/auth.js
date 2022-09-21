@@ -11,12 +11,12 @@ function setUser(username, password) {
 getUser().then(function (user) {
   if (
     !user &&
-    !location.pathname.includes("login.html") &&
+    !location.pathname.includes("index.html") &&
     !location.pathname.includes("signup.html")
   ) {
-    window.location = "login.html";
+    window.location = "index.html";
   }
-  if (user && location.pathname.includes("login.html")) {
+  if (user && location.pathname.includes("index.html")) {
     window.location = "parqueadero.html";
   }
 });
@@ -25,7 +25,7 @@ async function logout() {
   let response = await sendRequest("logout", "POST");
   if (response.status == 0) {
     localStorage.removeItem("user");
-    window.location = "login.html?message=Successful Closing Session";
+    window.location = "index.html?message=Successful Closing Session";
   }
   return false;
 }
@@ -43,7 +43,7 @@ async function login() {
     window.location = "parqueadero.html";
   } catch (error) {
     console.error(error.toString());
-    window.location = "login.html?error=Invalid username and password.";
+    window.location = "index.html?error=Invalid username and password.";
   }
 
   return false;
