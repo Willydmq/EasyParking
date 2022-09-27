@@ -64,7 +64,7 @@ function readProducts() {
 
   $.ajax({
     method: "GET",
-    url: "http://localhost:8080/parqueadero/",
+    url: "https://o1814.gitlab.io/EasyParking/parqueadero/",
     type: "JSON",
     contentType: "aplication/json",
     success: function (data) {
@@ -92,7 +92,7 @@ function deleteProduct(id) {
   var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
   if (conf == true) {
     $.ajax({
-      url: "http://localhost:8080/parqueadero/" + id,
+      url: "https://o1814.gitlab.io/EasyParking/parqueadero/" + id,
       method: "DELETE",
       success: function (result) {
         readProducts();
@@ -123,7 +123,7 @@ function addProduct() {
 
   $.ajax({
     type: "POST",
-    url: "http://localhost:8080/parqueadero/",
+    url: "https://o1814.gitlab.io/EasyParking/parqueadero/",
     data: json,
     contentType: "application/json; charset=utf-8",
     success: function (data) {
@@ -160,7 +160,7 @@ function updateProduct() {
 
   $.ajax({
     type: "PUT",
-    url: "http://localhost:8080/parqueadero/",
+    url: "https://o1814.gitlab.io/EasyParking/parqueadero/",
     data: json,
     contentType: "application/json; charset=utf-8",
     success: function (data) {
@@ -173,7 +173,7 @@ function updateProduct() {
 function editProduct(id) {
   sessionStorage.setItem("id", id);
   $.ajax({
-    url: "http://localhost:8080/parqueadero/" + id,
+    url: "https://o1814.gitlab.io/EasyParking/parqueadero/" + id,
     method: "GET",
     success: function (data) {
       $("#nit2").val(data.nit);

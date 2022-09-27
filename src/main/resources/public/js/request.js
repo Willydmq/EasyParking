@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/";
+const url = "https://o1814.gitlab.io/EasyParking/";
 
 /*async function sendRequest(endPoint, method, data) {
   return new Promise(async (resolve, reject) => {
