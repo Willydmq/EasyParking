@@ -151,7 +151,9 @@ function updateProduct() {
     email: $("#email2").val(),
     plaza_carro: $("#plaza_carro2").val(),
     plaza_moto: $("#plaza_moto2").val(),
-    //user_id: $("#user_id2").val(),
+    user: {
+      id: $("#user_id2").val(),
+    },
   };
 
   var json = JSON.stringify(product);
@@ -179,6 +181,7 @@ function editProduct(id) {
       $("#email2").val(data.email);
       $("#plaza_carro2").val(data.plaza_carro);
       $("#plaza_moto2").val(data.plaza_moto);
+      $("#user_id2").val(data.user.id);
       $("#update_product").modal("show");
     },
     error: function (request, msg, error) {
@@ -186,3 +189,27 @@ function editProduct(id) {
     },
   });
 }
+
+// function userId(id) {
+//   sessionStorage.setItem("id", id);
+//   $.ajax({
+//     url: "http://localhost:8080/parqueadero/" + id,
+//     method: "GET",
+//     success: function (data) {
+//       $("#nit").val(data.nit);
+//       $("#razon_social").val(data.razon_social);
+//       $("#email").val(data.email);
+//       $("#plaza_carro").val(data.plaza_carro);
+//       $("#plaza_moto").val(data.plaza_moto);
+//       $("#user_id").val(data.user.id);
+//       $("#update_product").modal("show");
+//     },
+//     error: function (request, msg, error) {
+//       // handle failure
+//     },
+//   });
+// }
+
+// function prueba() {
+//   document.getElementById("text").value = "6";
+// }
