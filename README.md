@@ -4,8 +4,8 @@
 
 # Componenentes
 
-1. **EasyParkingO18_14-backend**: [Repositorio del backend](https://gitlab.com/O1814/EasyParking/-/tree/main/EasyParkingO18_14-backend)
-2. **EasyParkingO18_14-frontend**: [Repositorio del frontend](https://gitlab.com/O1814/EasyParking/-/tree/main/EasyParkingO18_14-frontend)
+1. **EasyParkingO18_14-backend**: [Repositorio del backend](https://gitlab.com/O1814/EasyParking)
+2. **EasyParkingO18_14-frontend**: [Repositorio del frontend](https://gitlab.com/O1814/EasyParking/-/tree/main/src/main/resources/public)
 
 ### Mundo del problema
 
@@ -215,6 +215,6 @@ Construir una aplicación ‘Software’ dirigido a personas y microempresarios 
 
 ### Demo
 
-Prueba la [Demo](https://misionticproyectobaseciclo3-frontend-ingdeiver.vercel.app/login.html).
+Prueba la [Demo](https://o1814.gitlab.io/EasyParking).
 
 ![Demo](demo.png)
