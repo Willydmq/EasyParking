@@ -1,0 +1,21 @@
+stages:
+    - build
+    - package
+build:
+    image: alpine
+    stage: build
+    script:
+        - echo "Hello Docker" > index.html
+    artifacts:
+        paths:
+            - index.html 
+build docker image:
+    image: docker
+    stage: package
+    services:
+        - docker:dind
+    script:
+        - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+        - docker build -t $CI_REGISTRY_IMAGE .
+        - docker image ls
+        - docker push --all-tags $CI_REGISTRY_IMAGE
